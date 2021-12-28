@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 
@@ -20,6 +21,8 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'admin'], function () {
-
     Voyager::routes();
 });
+
+Route::get('/{slug}', [PageController::class, 'pageView'])
+    ->name('{slug}');
