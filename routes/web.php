@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use TCG\Voyager\Facades\Voyager;
 
 /*
@@ -19,6 +20,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('loc/{locale}', function ($locale) {
+    $langs = ['az', 'en'];
+    if (in_array($locale, $langs)) {
+        Session::put('locale', $locale);
+    } else {
+        Session::put('locale', "az");
+    }
+    return redirect()->back();
+})->name('locale');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ $locale }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <title>{{$page->title}}</title>
+    <title>{{$page->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}</title>
 
 </head>
 <body class="antialiased">
 <div class="container-fluid">
-    <h1>{{$page->title}}</h1>
-    <img src="{{asset('storage/'.$page->image)}}" alt="test">
-    <p>{{$page->excerpt}}</p>
-    {!! $page->body !!}
+    <h1>{{$page->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}</h1>
+{{--    <img src="{{asset('storage/'.$page->image)}}" alt="test">--}}
+    <p>{{$page->getTranslatedAttribute('excerpt', $locale, 'fallbackLocale')}}</p>
+    {!! $page->getTranslatedAttribute('body', $locale, 'fallbackLocale') !!}
 
 </div>
 
