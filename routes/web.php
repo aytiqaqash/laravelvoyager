@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -19,6 +20,7 @@ use TCG\Voyager\Facades\Voyager;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/curr', [CurrencyController::class, 'getAllForToday']);
 
 Route::get('loc/{locale}', function ($locale) {
     $langs = ['az', 'en'];
