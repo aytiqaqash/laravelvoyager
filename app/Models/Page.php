@@ -11,6 +11,7 @@ use TCG\Voyager\Traits\Translatable;
 class Page extends VoyagerPageModel
 {
     use HasFactory, Translatable;
+    protected $fillable = ['title','body', 'excerpt', 'image', 'image_ru','image_en'];
     protected $translatable = ['title','body', 'excerpt'];
     public static function findBySlug($slug){
         return static::withTranslations(Session::get('locale'))->where('slug', $slug)->first();

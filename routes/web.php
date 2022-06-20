@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::get('/curr', [CurrencyController::class, 'getAllForToday']);
 
 Route::get('loc/{locale}', function ($locale) {
-    $langs = ['az', 'en'];
+    $langs = ['az','ru', 'en'];
     if (in_array($locale, $langs)) {
         Session::put('locale', $locale);
     } else {

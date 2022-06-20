@@ -9,11 +9,25 @@
 </head>
 <body class="antialiased">
 <div class="container-fluid">
-    <h1>{{$page->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}</h1>
+    <h1>{{$locale}} | {{$page->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}</h1>
 {{--    <img src="{{asset('storage/'.$page->image)}}" alt="test">--}}
     <p>{{$page->getTranslatedAttribute('excerpt', $locale, 'fallbackLocale')}}</p>
     {!! $page->getTranslatedAttribute('body', $locale, 'fallbackLocale') !!}
 
+    <div class="row">
+
+        <?php
+            switch ($locale){
+                case "en": $imageUrl = Storage::url($page->image_en); break;
+                case "ru": $imageUrl = Storage::url($page->image_ru); break;
+                default: $imageUrl = Storage::url($page->image);
+            }
+        ?>
+
+        <div class="col-3"></div>
+        <div class="col-6"> <img src="{{asset($imageUrl)}}" alt=""></div>
+        <div class="col-3"></div>
+    </div>
 </div>
 
 {{--Bootstrapın js əlavələri--}}
